@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="yx_core:jar">
+    <output-path>D:/Programming/java_output</output-path>
+    <root id="archive" name="yx_core.jar">
+      <element id="module-output" name="yx_core" />
+    </root>
+  </artifact>
+</component>
