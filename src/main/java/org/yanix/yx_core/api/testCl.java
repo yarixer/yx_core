@@ -5,6 +5,6 @@ import org.bukkit.entity.Player;
 
 public class testCl {
     public void gamePlayerJoined(Player player){
-        player.sendMessage(ChatColor.YELLOW + "Hey, welcome!");
+        player.sendMessage(ChatColor.YELLOW + "Hey, welcome!"); //aa
     }
 }
