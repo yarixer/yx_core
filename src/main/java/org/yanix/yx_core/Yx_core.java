@@ -9,6 +9,7 @@ public final class Yx_core extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        this.saveDefaultConfig();
         instance = this;
         yamlFileHandler = new YamlFileHandler(getDataFolder());
         getLogger().info("Core plugin enabled!");

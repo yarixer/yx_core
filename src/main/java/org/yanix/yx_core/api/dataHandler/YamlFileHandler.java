@@ -45,7 +45,7 @@ public class YamlFileHandler {
 
         data.put(section, value);
         saveAll(file, data);
-        logger.info("Section '" + section + "' successfully written to file: " + fileName);
+        //logger.info("Section '" + section + "' successfully written to file: " + fileName);
     }
 
     public synchronized void deleteSection(String fileName, String section, String keyToDelete) {
@@ -61,12 +61,12 @@ public class YamlFileHandler {
 
         if (keyToDelete == null) {
             data.remove(section);
-            logger.info("Section '" + section + "' successfully deleted from file: " + fileName);
+            //logger.info("Section '" + section + "' successfully deleted from file: " + fileName);
         } else if (sectionData instanceof Map<?, ?>) {
             Map<String, Object> sectionMap = (Map<String, Object>) sectionData;
             if (sectionMap.containsKey(keyToDelete)) {
                 sectionMap.remove(keyToDelete);
-                logger.info("Key '" + keyToDelete + "' successfully deleted from section '" + section + "' in file: " + fileName);
+                //logger.info("Key '" + keyToDelete + "' successfully deleted from section '" + section + "' in file: " + fileName);
             } else {
                 logger.warning("Key '" + keyToDelete + "' does not exist in section '" + section + "' in file: " + fileName);
             }
@@ -91,10 +91,20 @@ public class YamlFileHandler {
     }
 
     private synchronized void saveAll(File file, Map<String, Object> data) {
-        try (FileWriter writer = new FileWriter(file)) {
-            yaml.dump(data, writer);
+        try {
+            // Проверяем и создаём родительскую директорию, если её нет
+            File parentDir = file.getParentFile();
+            if (!parentDir.exists() && !parentDir.mkdirs()) {
+                throw new IOException("Could not create directories for file: " + file.getAbsolutePath());
+            }
+
+            // Пишем данные в файл
+            try (FileWriter writer = new FileWriter(file)) {
+                yaml.dump(data, writer);
+            }
         } catch (IOException e) {
             logger.log(Level.SEVERE, "Error writing to YAML file: " + file.getAbsolutePath(), e);
         }
     }
+
 }
