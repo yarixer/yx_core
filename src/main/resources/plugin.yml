@@ -2,3 +2,4 @@ name: yx_core
 version: '1.0-SNAPSHOT'
 main: org.yanix.yx_core.Yx_core
 api-version: '1.21'
+load: STARTUP

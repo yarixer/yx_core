@@ -1,19 +1,29 @@
 package org.yanix.yx_core;
 
 import org.bukkit.plugin.java.JavaPlugin;
-import org.yanix.yx_core.api.testCl;
+import org.yanix.yx_core.api.dataHandler.YamlFileHandler;
 
 public final class Yx_core extends JavaPlugin {
-
-    public testCl testcl;
+    private static Yx_core instance;
+    private YamlFileHandler yamlFileHandler;
 
     @Override
     public void onEnable() {
-        testcl = new testCl();
+        instance = this;
+        yamlFileHandler = new YamlFileHandler(getDataFolder());
+        getLogger().info("Core plugin enabled!");
     }
 
     @Override
     public void onDisable() {
-        // Plugin shutdown logic
+        getLogger().info("Core plugin disabled!");
+    }
+
+    public static Yx_core getInstance() {
+        return instance;
+    }
+
+    public YamlFileHandler getYamlFileHandler() {
+        return yamlFileHandler;
     }
 }
