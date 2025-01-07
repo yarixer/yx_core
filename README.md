@@ -2,12 +2,6 @@
 
 ## Repositories
 
-> [!IMPORTANT]  
-> You can check last API version on jitpack.io
-> 
-> [![](https://jitpack.io/v/yarixer/yx_core.svg)](https://jitpack.io/#yarixer/yx_core)
-
-
 #### Maven
 
 ```xml
@@ -50,6 +44,11 @@ dependencies {
 	    implementation 'com.github.yarixer:yx_core:0.5'
 }
 ```
+
+> [!IMPORTANT]  
+> You can check last API version on jitpack.io
+>
+> [![](https://jitpack.io/v/yarixer/yx_core.svg)](https://jitpack.io/#yarixer/yx_core)
 
 ## API Test
 
