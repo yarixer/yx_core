@@ -52,30 +52,42 @@ public class YamlFileHandler {
         File file = new File(pluginFolder, fileName);
         Map<String, Object> data = loadAll(file);
 
+        // Если section == null, очищаем весь файл
+        if (section == null) {
+            data.clear();
+            saveAll(file, data);
+            //logger.info("All sections successfully deleted from file: " + fileName);
+            return;
+        }
+
+        // Если указано section, но нет keyToDelete
         if (!data.containsKey(section)) {
             logger.warning("Section '" + section + "' does not exist in file: " + fileName);
             return;
         }
 
-        Object sectionData = data.get(section);
-
         if (keyToDelete == null) {
             data.remove(section);
             //logger.info("Section '" + section + "' successfully deleted from file: " + fileName);
-        } else if (sectionData instanceof Map<?, ?>) {
-            Map<String, Object> sectionMap = (Map<String, Object>) sectionData;
-            if (sectionMap.containsKey(keyToDelete)) {
-                sectionMap.remove(keyToDelete);
-                //logger.info("Key '" + keyToDelete + "' successfully deleted from section '" + section + "' in file: " + fileName);
-            } else {
-                logger.warning("Key '" + keyToDelete + "' does not exist in section '" + section + "' in file: " + fileName);
-            }
         } else {
-            logger.warning("Section '" + section + "' is not a valid map in file: " + fileName);
+            Object sectionData = data.get(section);
+
+            if (sectionData instanceof Map<?, ?>) {
+                Map<String, Object> sectionMap = (Map<String, Object>) sectionData;
+                if (sectionMap.containsKey(keyToDelete)) {
+                    sectionMap.remove(keyToDelete);
+                    //logger.info("Key '" + keyToDelete + "' successfully deleted from section '" + section + "' in file: " + fileName);
+                } else {
+                    logger.warning("Key '" + keyToDelete + "' does not exist in section '" + section + "' in file: " + fileName);
+                }
+            } else {
+                logger.warning("Section '" + section + "' is not a valid map in file: " + fileName);
+            }
         }
 
         saveAll(file, data);
     }
+
 
     private synchronized Map<String, Object> loadAll(File file) {
         if (!file.exists()) {
