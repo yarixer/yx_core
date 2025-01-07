@@ -2,8 +2,63 @@
 
 ## Repositories
 
+> [!IMPORTANT]  
+> You can check last API version on jitpack.io
+> 
+> [![](https://jitpack.io/v/yarixer/yx_core.svg)](https://jitpack.io/#yarixer/yx_core)
+
+
+#### Maven
+
+```xml
+<repositories>
+	<repository>
+	    <id>jitpack.io</id>
+	    <url>https://jitpack.io</url>
+	</repository>
+</repositories>
+```
+
+#### Gradle
+
+```gradle
+dependencyResolutionManagement {
+	repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+	repositories {
+		mavenCentral()
+		maven { url 'https://jitpack.io' }
+	}
+}
+```
+
+## Dependencies
+
+#### Maven
+
+```xml
+<dependency>
+	<groupId>com.github.yarixer</groupId>
+	<artifactId>yx_core</artifactId>
+	<version>0.5</version>
+</dependency>
+```
+
+#### Gradle
+
+```gradle
+dependencies {
+	    implementation 'com.github.yarixer:yx_core:0.5'
+}
+```
+
+## API Test
+
+* Download last API version jar file and put into `plguins` folder.
+
+* Add this simple example to your main class to test the plugin's functionality.
+
 <details>
-  <summary>Code</summary>
+  <summary>CODE HERE</summary>
 
 ```js
 public final class Main extends JavaPlugin {
@@ -34,59 +89,6 @@ public final class Main extends JavaPlugin {
 ```
 
 </details>
-
-#### Maven
-
-```gradle
-<repositories>
-	<repository>
-	    <id>jitpack.io</id>
-	    <url>https://jitpack.io</url>
-	</repository>
-</repositories>
-```
-
-#### Gradle
-
-```gradle
-dependencyResolutionManagement {
-	repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
-	repositories {
-		mavenCentral()
-		maven { url 'https://jitpack.io' }
-	}
-}
-```
-
-## Dependencies
-
-#### Maven
-
-```gradle
-<dependency>
-	<groupId>com.github.yarixer</groupId>
-	<artifactId>yx_core</artifactId>
-	<version>0.5</version>
-</dependency>
-```
-
-#### Gradle
-
-```gradle
-dependencies {
-	    implementation 'com.github.yarixer:yx_core:0.5'
-}
-```
-
-## API Test
-
-* Download last API version jar file and put into `plguins` folder.
-
-* Add this simple example to your main class to test the plugin's functionality.
-
-```gradle
-code here
-```
 
 ## API: How to use
 
