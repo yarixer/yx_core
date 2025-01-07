@@ -2,6 +2,39 @@
 
 ## Repositories
 
+<details>
+  <summary>Code</summary>
+
+```js
+public final class Main extends JavaPlugin {
+
+    @Override
+    public void onEnable() {
+    
+        //connect
+        Yx_core core = Yx_core.getInstance();
+        if (core == null) {
+            getLogger().severe("Core plugin is not loaded! Disabling...");
+            Bukkit.getPluginManager().disablePlugin(this);
+            return;
+        }
+
+        //read
+        int example1 = core.getYamlFileHandler()
+                .readSection("testplugin1/myfile.yml", "age", Integer.class)
+                .orElse(0);
+
+        //write
+        example1++;
+        core.getYamlFileHandler().writeSection("testplugin1/myfile.yml", "age", example1);
+		
+        getLogger().info("TestPlugin1 enabled!");
+    }
+}
+```
+
+</details>
+
 #### Maven
 
 ```gradle
